@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  lb:
+    image: haproxy
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./haproxy:/usr/local/etc/haproxy
+
+  soloq1:
+    image: haproxy-io
+    environment: 
+      - APPID=soloq1
+
+  soloq2:
+    image: haproxy-io
+    environment: 
+      - APPID=soloq2
+      
+  redis:
+    image: redis
